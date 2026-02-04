@@ -27,6 +27,7 @@ type Page = {
   key: string;
   image: any;
   button: string;
+  text: string;
 };
 
 export default function OnboardingScreen({ navigation }: Props) {
@@ -39,10 +40,34 @@ export default function OnboardingScreen({ navigation }: Props) {
 
   const pages: Page[] = useMemo(
     () => [
-      { key: '1', image: ONB1, button: "Let’s Dig" },
-      { key: '2', image: ONB2, button: 'Show Me How' },
-      { key: '3', image: ONB3, button: "I’m Ready" },
-      { key: '4', image: ONB4, button: 'Start Game' },
+      {
+        key: '1',
+        image: ONB1,
+        button: "Let’s Dig",
+        text:
+          "Hey there. I’m the Hidden Miner.\nI appear quietly, just for a moment,\nbetween coal and stone.\nStay present and you’ll notice me.\nLose focus, and I’ll slip away.",
+      },
+      {
+        key: '2',
+        image: ONB2,
+        button: 'Show Me How',
+        text:
+          "When I show up, tap without delay.\nEach clean tap moves you forward.\nWaiting too long means the moment is gone.\nDon’t rush — just be ready\nfor the next appearance.",
+      },
+      {
+        key: '3',
+        image: ONB3,
+        button: "I’m Ready",
+        text:
+          "Time is always moving here.\nEvery hesitation costs a little of it.\nKeep your eyes steady, your reactions light,\nand follow the rhythm\nwhile the clock keeps running.",
+      },
+      {
+        key: '4',
+        image: ONB4,
+        button: 'Start Game',
+        text:
+          "Between runs, I leave short stories\nfrom the mine. Save the ones you like\nor share them along the way.\nProgress unlocks visual rewards —\nearned through attention, not chance.",
+      },
     ],
     []
   );
@@ -67,9 +92,6 @@ export default function OnboardingScreen({ navigation }: Props) {
   useEffect(() => {
     playIn();
   }, [index]);
-
-  const copyText =
-    "Hey there! I'm the Hidden Miner. I\npop out from behind coal and\nstone for just a blink. If you're\nwatching, you'll catch me. If you're\ndrifting, you won’t.";
 
   const goNext = () => {
     if (index >= pages.length - 1) {
@@ -115,7 +137,7 @@ export default function OnboardingScreen({ navigation }: Props) {
         >
           <Animated.View style={{ opacity: a, transform: [{ translateY: y }], width: '100%', alignItems: 'center' }}>
             <Text style={[styles.copy, { fontSize: textSize, lineHeight: textLH, marginBottom: isTinyH ? 8 : 12 }]}>
-              {copyText}
+              {pages[index].text}
             </Text>
 
             <Image source={pages[index].image} style={{ width: characterW, height: characterH }} resizeMode="contain" />
