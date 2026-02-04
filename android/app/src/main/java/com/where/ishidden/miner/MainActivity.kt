@@ -1,4 +1,4 @@
-package com.whereishiddenminer
+package com.where.ishidden.miner
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

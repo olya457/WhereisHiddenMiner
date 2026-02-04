@@ -1,4 +1,4 @@
-package com.whereishiddenminer
+package com.where.ishidden.miner
 
 import android.app.Application
 import com.facebook.react.PackageList
